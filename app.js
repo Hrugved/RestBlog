@@ -6,7 +6,10 @@ var bodyParser = require("body-parser"), //so that we can use req.body
 	app = express(); 
 
 // APP config
-mongoose.connect("mongodb://localhost/Blog");
+//mongoose.connect("mongodb://localhost/Blog");
+
+mongoose.connect("mongodb+srv://pineappleiitian:moongoosepassword@cluster0-qvm9l.mongodb.net/cluster0?retryWrites=true&w=majority");
+
 app.set("view engine", "ejs"); //to save us fro type .ejs repeatedy
 app.use(express.static("public")); //to be able to use .css external files
 app.use(bodyParser.urlencoded({extended:true})); 
@@ -29,6 +32,13 @@ app.get("/",(req,res)=>{
 	res.redirect("/blogs");
 });
 
+//SHOW-INDEX
+app.get("/blogs",(req,res)=>{
+	Blog.find({},(err,Blogs)=>{	
+		if(err) {console.log('Error fetching all blogs from DB', e)}
+		else {res.render("index",{blogs:Blogs});}
+	})
+});
 
 //CREATE-FORM
 app.get("/blogs/new",(req,res)=>{
