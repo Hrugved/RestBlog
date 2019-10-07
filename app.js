@@ -87,7 +87,8 @@ app.delete("/blogs/:id",(req,res)=>{
 	});
 });
 
-app.listen(3001,process.env.IP,()=>{
+const port = process.env.PORT || 3001 
+app.listen(port,process.env.IP,()=>{
 	console.log("Server is up and Running!");
 });
 	
