@@ -4,7 +4,7 @@
   "description": "simple blog app following all 7 REST architechture",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node app.js"
   },
   "author": "hrugved",
   "license": "ISC",
